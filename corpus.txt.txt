@@ -1,0 +1,201 @@
+The Infinite Monkey Theorem is an urban winery operated out of the back alleys of Denver & Austin.
+HAHA, Gotcha! Just kidding. Today we will talk about a famous mathematical problem, “The Infinite Monkey Theorem”. The place does exist though, I came across to their website when I was doing a research for this post.
+The idea goes back to early 1900’s, it basically says if we have infinite time and infinite resources, we can create even very complex things.
+Suppose you have infinite number of monkeys, infinite number of typewriters, paper, ink and time. Monkeys hit the keys randomly for 7/24, They do not get tired or they do not age. What could possibly come out from their writings?
+According to our theory, this experiment might result in writing Sheakespeare sonnets, Dostoyevsky’s Crime and Punishment, or anything you can think of!
+Sounds really unlikely and not realistic right? But it is not impossible. Let’s take a look at the case from mathematical perspective: Probability. Monkey has certain number of keys on the typewriters. Exactly 44 for the standard American typewriter. The probability of hitting any of them is 1/44.
+Each event is independent from each other, typing “a” in one attempt and typing “z” from the next is completely independent. So, we can compute the probability of any word our little monkey is going to type. As many of you have already guessed, as the word or text gets longer, it becomes less likely to type it, but not impossible! (Considering we have unlimited resources.)
+With the help of computers, it is possible to simulate such an event and leave monkeys alone. In past, some attempts have been made about random number and random document generation. If you want to learn more about them you can check out this link from Wikipedia.
+I came across with this subject over my Stochastic Models course and I wanted to try it myself too! I coded it with python using random and timeit libraries.
+ We will use random to randomly select one letter from the alphabet
+We will use timeit to record starting and ending time to see how much time it took our digital monkey to type a given text.
+Since my time and computational resources are limited, I made a one word generator. Here’s our digital monkey function.And lastly, we can run this code to see how much time it will take us to get the text we wanted. I used my name for the simplicity and also because I am a bit impatient. You can go ahead and try whatever you want!
+I will leave some of the interesting applications I encountered along with other resources below. Hope it was fun and let me know if you try it yourself, it is very easy!
+Can you explain how your model works?
+Artificial intelligence techniques are used to solve real-world problems. We get the data, perform some operations to make it clean & ready for the following processes.
+We basically pick things from this world and take them into the world of machines, represent it with numbers, and then feed it to a bunch of models. Try to improve them and eventually “the winner model” gets the test data. A vital question comes to the minds :
+“ How do we take this result back to real world ? “
+Explainable AI (with a cooler name: XAI)
+A formal definition: According to Wikipedia, Explainable AI refers to methods and techniques in the application of artificial intelligence technology such that the results of the solution can be understood by humans. [1]
+In the early phases of AI adoption, it was okay to not understand what the model predicts in a certain way, as long as it gives the correct outputs. Explaining how they work was not the first priority. Now, the focus is turning to build human interpretable models.
+Three important aspects of model interpretation are:
+1. Transparency
+2. The ability to question
+3. The ease of understanding .[2]
+Model interpretability can be examined in two levels:
+Global Interpretation: Examines the model from a broader perspective. For example, let’s say we are working on a house price dataset and we implemented a neural network. The global interpretation might say “Your model uses # of squared feet as an important feature to derive predictions”
+Local Interpretation: As the name suggests, this approach is focused on a certain observation/data point. Let’s continue moving forward with our example. Prediction for a really small house turned out large. Local interpretation looks at the other features and it might say “Your model predicted this way because the location of the house is very close to the city center.”The Trade-off Between Accuracy and Interpretability
+In the industry, you will often hear that business stakeholders tend to prefer models that are more interpretable like linear models (linear\logistic regression) and trees which are intuitive, easy to validate, and explain to a non-expert in data science. [2]
+In contrast, when we look at the complex structure of real-life data, in the model building & selection phase, the interest is mostly shifted towards more advanced models. That way, we are more likely to obtain improved predictions.
+Models like these (ensembles, neural networks, etc.) are called black-box models. As the model gets more advanced, it becomes harder to explain how it works. Inputs magically go into a box and voila! We get amazing results.
+But, HOW?
+When we suggest this model to stakeholders, will they completely trust it and immediately start using it? NO. They will ask questions and we should be ready to answer them.
+Why should I trust your model?
+Why did the model take a certain decision?
+What drives model predictions?
+We should consider both improving our model accuracy and not get lost in the explanation. There should be a balance between both.Here, I would like to share a sentence from Dipanjan Sarkar’s medium post about explainable AI:
+Any machine learning model at its heart has a response function which tries to map and explain relationships and patterns between the independent (input) variables and the dependent (target or response) variable(s). [3]
+So, models take inputs and process them to get outputs. What if our data is biased? It will also make our model biased and therefore untrustworthy. It is important to understand & be able to explain to our models so that we can also trust their predictions and maybe even detect issues and fix them before presenting them to others.
+To improve the interpretability of our models, there are various techniques some of which we already know and implement. Traditional techniques are exploratory data analysis, visualizations, and model evaluation metrics. With the help of them, we can get an idea of the model’s strategy. However, they have some limitations. To learn more about traditional ways and their limitations, check out this amazing article by Dipanjan Sarkar.[4]
+Other model interpretation techniques and libraries have been developed to overcome limitations. Some of these are :
+LIME ( Local Interpretable Model-Agnostic Explanations)
+SHAP (Shapley Additive Explanations)
+ELI5 (Explain Like I’m 5)
+SKATER
+These libraries use feature importance, partial dependence plots, individual conditional expectation plots to explain less complex models such as linear regression, logistic regression, decision trees, etc.
+Feature importance shows how a feature is important for the model. In other words, when we delete the feature from the model, how our error changes? If the error increases a lot, this means that a feature is important for our model to predict the target variable.Partial dependence plots visualize the effect of the change for a certain feature when everything else is held constant (with a cooler phrase: ceteris paribus). With the help of these, we can see a possible limit value, where this value is exceeded, it directs the model predictions the other way. When we are visualizing partial dependence plots, we are examining the model globally.
+Individual conditional expectation plots show the effect of changes for a certain feature, just like partial dependency plots. But this time, the point of view is local. We are interested to see the effect of changes for a certain feature for all instances in our data. A partial dependence plot is the average of the lines of an ICE plot.[5]When it comes to explaining more advanced models, model-agnostic (does not depend on the model) techniques are used.
+Global surrogate models take the original inputs and your black-box machine learning predictions. When this new dataset is used to train and test the appropriate global surrogate model (more interpretable models such as linear model, decision tree, etc.), it basically tries to mimic your black-box model’s predictions. By interpreting and visualizing this “easier” model, we get a better understanding of how our actual model predicts in a certain way.
+Other interpretability tools are LIME, SHAP, ELI5, and SKATER libraries. We will talk about them in the next post, over a guided implementation. Until then, I am sharing some amazing resources I used to form this post along with some extra links. Stay tuned for the next post, see you there!
+Happy learning!In this post, we will introduce ourselves to PyTorch. It is developed by Facebook AI research lab in 2016. The library is mostly used for computer vision, machine learning, and deep learning applications. Currently, I am participating in a bootcamp called “Deep Learning with PyTorch: Zero to GANs”. In the scope of this program, we will learn and implement many things by using this library. As I progress through the bootcamp, I aim to share what I have learned here!
+If you have no idea about PyTorch, don’t worry. I am also a complete beginner in deep learning. We will go through definitions and explanations in between subjects and hopefully learn together. Let’s get started!
+What is PyTorch?
+PyTorch is a Python-based scientific computing package targeted at two sets of audiences:
+A replacement for NumPy to use the power of GPUs
+a deep learning research platform that provides maximum flexibility and speed. [0]
+The definition above raises this question: What the hell is GPU’s and what does it mean to use the power of them?
+Well, GPU stands for Graphical Processing Unit. They are said to be more powerful and fast when compared to CPU’s (Central Processing Unit) for doing some specific tasks.
+*This is a huge topic, so we won’t go into details here. If you are curious about it, kindly check out this link for more info: https://bit.ly/2JjYnh8
+PyTorch uses tensors to do numerical computations. It includes many functions that will help us to do these calculations easily.
+A tensor is a number, vector, matrix, or any n-dimensional array.
+To decide which functions to introduce, I used Google Trends! This platform allows us to see trends of people’s searches on Google. Here’s what I got when I typed “PyTorch tensor”.
+From the analysis, people mostly search for the following functions for PyTorch tensors:So, we will cover the following functions:
+torch.from_numpy() — .numpy()
+torch.size() — torch.shape()
+torch.rand()
+.clone()
+.reshape()
+torch.Tensor.tolist()
+How to turn a numpy array into PyTorch tensor (and vice-versa)?
+It is relatively easy to convert numpy arrays to tensors. We will use torch.from_numpy() function. Let’s see it on an example.
+Numpy is another library that makes scientific mathematical operations easier.np is an alias used for numpy here. This way we can use numpy methods with typing just np instead of numpy. We could have used anything, but it’s best to follow common conventions to write more readable and understandable code.
+We created our array, now it’s time to import torch and convert it.Voila! We have a brand new tensor. Could it be any easier!?
+There are a few things to consider when we are converting numpy array to tensor. For example:Oops… The same element in numpy array also changed. That’s because t1 and nd_arr share the same memory. So any modifications on either will affect the other. Watch out!
+from_numpy() supports only some specific data types.We got a Type Error because only the following data types are supported: float64, float32, float16, complex64, complex128, int64, int32, int16, int8, uint8, and bool.
+Another important thing to keep in mind: the tensors we converted from numpy arrays are not resizable. In other words, you cannot change dimensions of the tensors.
+For more information about this function, you can check out the documentation: https://bit.ly/33E9Cs3
+Now we have learned how to convert numpy arrays to pytorch tensors, it’s time to do it the other way. Turn tensor to numpy array! For this, we will create a new tensor.For this process, we will use .numpy() function.Since numpy array supported data types are also supported by PyTorch, we won’t get a type error.
+Don’t forget : Tensor and converted numpy array shares the same memory location.This operation is called as “the numpy bridge”. For more information, check out the documentation: https://bit.ly/33Drcw6
+What is the size & shape of my tensor?
+Size and shape concepts are a bit different when we compare numpy and PyTorch. Size refers to an integer, the number of elements, in a numpy array. Shape refers you to a tuple (a,b) where:
+- a=number of rows in the array and
+- b= number of columns in the array.
+For PyTorch, using size() and shape has no difference. This is how we learn about the size/shape of a tensor.As you can see, concepts are abit different for numpy and PyTorch. Here’s a good resorce to learn more about it: https://bit.ly/2IbbEZ8
+How to form a tensor with random numbers?
+PyTorch has many different functions allowing us to create randomized tensors.
+torch.rand() : Returns a tensor filled with random numbers from a uniform distribution on the interval [0, 1)
+torch.rand_like(input) : Returns a tensor with the same size as input that is filled with random numbers from a uniform distribution on the interval [0, 1).
+torch.randint() : Returns a tensor filled with random integers generated uniformly between low (inclusive) and high (exclusive).
+torch.randint_like(input) : Does the exact same operation with randint but specifies its sizes with the input tensor.
+torch.randn() : Returns a tensor filled with random numbers from a normal distribution with mean 0 and variance 1 (also called the standard normal distribution).
+torch.randn_like(input) : Does the exact same operation with randn but specifies its size with the input tensor.
+torch.randperm() : Returns a random permutation of integers from 0 to n - 1.
+We will only implement torch.rand() here as the other functions are very similar. Check out the documentation for further info: https://bit.ly/3mxzHjPIf you run the cell again, you will see different elements .
+The specified size must be of type integer.How to take copies/clone of a tensor?
+There are more than one ways we can clone a tensor [1].According to stackoverflow, b is explicitly preferred over others. So we will implement that now. You can learn more about the reason behind it in this post: https://bit.ly/2JCwyRp
+In this version, we detach the tensor from its computational path and clone or we first clone and then detach. If you first detach the tensor and then clone it, the computation path is not copied, the other way around it is copied and then abandoned. Thus, .detach().clone() is very slightly more efficient.[1]Also, when we clone a tensor the new one does not share the same memory location with the original one. But some cloning methods share the same memory, make sure you pick the one you need!Another way of doing the same operation is this, but it’s not the best practice. So it’s better to avoid using this one.
+When you use this approach it also works, but PyTorch throws a little warning that looks like this: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+The difference between two methods is explained very well in here:
+https://bit.ly/3qvWv5JHow to reshape a tensor?
+PyTorch offers different ways to manipulate sizes of tensors. We will introduce one of them here and leave the remaining options to you. Check them out here: https://bit.ly/3lHnoQN
+We will use torch.reshape() method. It basically returns a tensor that has the same number of elements but in a different shape. In other words, number of rows and columns are different.
+When you specify the new size in a tuple, it automatically creates new tensor for you.Be careful, the resized tensor and original one share the same memory location!How to create a tensor from list (and vice versa)?
+Turning lists to tensors are really easy. The process is very similar to turning numpy array to a tensor.As long as lists contain appropriate data types and sizes, tensors can be created easily. Let’s see it over an example:Make sure your dimensions are appropriate to form a tensor!
+We can also convert tensors into lists by using torch.Tensor.tolist() function.That’s all for now! Hope you enjoyed this tutorial. Stay tuned for the upcoming ones and don’t forget to practice them by yourself.“Git” the best friend and the life savior of developers. As data science enthusiasts, should it be our best friend too? Definitely yes! In this post, I’ll explain what the hell is Git, why we should use it and how to get started. In following posts, we will learn how to get comfortable with managing our projects effectively with this technology
+Recently I started a challenge where I committed myself to learn something new about Data Science everyday (#66daysofdata challenge, you can check out this post for more information: https://bit.ly/3fdOKwd)
+That’s how our paths have crossed with Git. It is a distributed version control system. So it basically keeps records of your work if you “commit” the changes you’ve made. With the help of Git you can even go back to earlier versions of your work. Since it stores the files in a distributed manner, you won’t lose your data. It’s fast and accessible from all around the world. You can either work from your local repositories or remote repositories. Don’t worry I’ll pop some definitions in case you are not familiar with any of these.
+Are Git and GitHub the same?
+NO. GitHub is a code hosting platform for version control and collaboration [1]. Git comes into play when we say “version control”.
+Version: Latest saved form of a document.
+Version control: Management of changes to documents, programs, websites.
+Let’s talk more about the version control systems. There are 2 approaches: Centralized or Decentralized.
+Centralized Version Control Systems
+Everyone is connected to one online repository. They all commit changes and get updates from it when they are working on the project. If they lose internet connection, they become unable to do anything and in this case, changes get lost before committing.
+Image for post
+Source: https://bit.ly/3fdVAld
+Repository: A software repository, or “repo” for short, is a storage location for software packages. It can be local or remote. Local means the repository in your device and remote means the repositoy stored in GitHub.
+Working copy: The version you are currently working on.
+Commit: Saving changes to a repository.
+Update: Getting the latest version of a repository.
+Decentralized (or Distributed) Version Control Systems
+Every user works seperately from the repository they have in their devices. They commit changes and save the work to their “local repositories”. If they want to update the main repo, they basically “push” those changes.
+Image for post
+Source: https://bit.ly/35IJ6yR
+Push: Upload Git commits that you have executed into a remote repository, for example to your GitHub account.
+Pull: Download changes from a remote repository, for example you are working on a project with your friend. He/she “pushed” the latest changes to the GitHub repository you are using for the project. You will need to pull those changes so that your local repository stays up-to-date.
+Why Decentralized VCS is a better option when compated to Centralized?
+Decentralized VCS (version control system for short) is faster.
+It does not require internet connection.
+Changes can be accepted/rejected.
+No need to contact the main server (remote repository) all the time.
+Why data enthusiasts should use Git?
+Now that we know more about version control systems and which category Git falls into, we can discuss the reasons why we should use it.
+Advantages of Git:
+More organized teamwork:
+In big teams and projects, sometimes many people work on the same thing and this can lead to confusion & problems. With Git, we can create “branches”, work on the branch and “merge” after we think it’s ready. This makes it safer to work together.
+Easier to follow changes throughout time:
+What changed in this version of the project?
+Who committed the changes?
+Saves space and ensures back-up.
+Flexible, free, fast, allows us to go back to older versions, easy to use, completely distributed and can support projects of big scale.
+Branch*: There are different types of branches and related operations we will discuss these later. But to simply understand the concept, we can use the below photo.
+Image for post
+Let’s go back to our previous example. Master branch is our main project that we do with our friend. We keep working on the project and add changes through time. Then we suddenlt realized we forgot to do a step in previous sections or we wanted to add some other feature, we basically go back to that version and create a seperate branch to work on those changes. After we are satisfied with the work, we can combine the changed with master.
+Merge*: Combining a branch with another branch or the master branch
+*As it has been said, we will deal with branching and merging operations with details in the further chapters, do not worry if these concepts seem complicated for now.
+As data enthusiasts, we should familiarize ourselves with Git because many companies run big projects that are run by teams. And we are likely to take part in those teams. Everyone has specific tasks assigned to them and we should be able to keep track of those changes. Comfortably work on our copy and push the changes when we feel like it’s ready.
+How to get started?
+Now, we will install and initialize Git. Github’s webpage suggests us to follow these installation steps:
+Navigate to the latest Git for Windows installer and download the latest version [2].
+Once the installer has started, follow the instructions as provided in the Git Setup wizard screen until the installation is complete. (Do not forget to select “Git Bash” and “Git GUI”.
+Open the windows command prompt (or Git Bash if you selected not to use the standard Git Windows Command Prompt during the Git installation).
+Type git version to verify Git was installed successfully.
+Git Bash: Terminal-command line like platform allowing us to manage changes in our project by using a series of different commands (which will be discussed in the next post).
+Git GUI: Graphical User Interface for Git.
+$ git --version
+Image for post
+Right click on the desktop, you should see “Git Bash” there. Click on it and execute the code written above.
+Initializing Git for your project
+If we want to use Git, installing will not be enough. We should also initialize it and do some configurations. We will need to do configuration settings just for once, Git will store it and use it when it’s necessary. To initialize Git in our folder, we will use the following command:
+$ git init
+Image for post
+First command (make directory) is used to create a directory called “project”. The second one (change directory) is used to move ourself from Desktop to another directory, which is “project” in our case.
+Yeah, it’s that easy! Now that we initialized, let’s go ahead and do the configurations.
+$ git config --global user.name "your_GitHub_username"
+$ git config --global user.email "your_GitHub_email"
+Image for post
+This will connect your project file to your GitHub account. But do not worry, as long as you do not “push” the changes, it will not appear in GitHub repository. Your work will remain local.
+Notice the change, now in the upper bar (master) appeared. This means we have successfully initialized Git.
+With using the following command, we can make sure Git saved our configuration settings.
+$ git config --list
+Image for post
+By typing the following command, we can see our “status” which will be explained in the following post.
+Status: The difference between the last saved version and the copy you are currently working on.
+$ git status
+Image for post
+As we haven’t added anything or committed any changes, it shows nothing. A typical data science project will include a dataset, codes etc. We will see how we can add files so thet Git tracks them in the next post.
+Now we will stop here and let these sink in. For the next post, we will learn:
+how to open projects and add files,
+stage the changes,
+committing,
+going back to older versions,
+branching & merging,
+pushing & pulling changes to our repository,
+cloning some other repository and
+some common conventions/good practices.
+It might take time go get used to Git and work comfotably. But once you do, it will surely make your life a lot easier. Here are some resources to go through before doing further application. Stay tuned for the next post, I’ll see you there!
+Some useful resources to check out before we dive deeper:
+Git Documentation : https://bit.ly/2KouYmr
+Ken Jee’s Git video on youtube : https://bit.ly/36O58zH
+Mert Cobanov’s Git videos [TR] : https://bit.ly/3kRDHdu , https://bit.ly/2IJ0GdI
+Corey Shafer’s Git tutorial on youtube : https://youtu.be/HVsySz-h9r4
+Emre Altunbilek’s Git course on Udemy [TR] : https://www.udemy.com/course/sourcetree-ile-git-ve-github-kullanimi/
+Buckle up, we are going on an adventure! Yes, you heard it right, I’m starting something brand new and I’m gonna take you with me. Probably most of you have heard the famous #66daysofdata challenge by Ken Jee. I’ve been following the hashtag for sometime and I recently joined the discord server as well. (Such a great and welcoming community!) After some planning and resource hunting, finally I’m starting!!
+In case you haven’t heard the challenge, let me summarize the gist. Dou you know something called the 1% Principle? Well, according to this rule,even the slightest improvements matter a lot when we do it constantly. So to get better at what we want to do, we should study, for at least 5 mins a day for a period of time. By the way, your subject doesn’t have to be just related to data. Choose anything you want to get better at, invest in yourself, you will definitely succeed!!
+Image for post
+The 1% Principle (click to read the article about it)
+I will also adjust the challenge for myself in some ways. I’m not gonna stick with 66 days, my plan is to go for 80 days and I’m gonna call this as an adventure rather than a challenge. Inspired from one of my favorite books as a child, Jules Verne — Around The World in 80 Days. Just like Mr. Fogg (the main character of the book), we will explore the depths and breadths of data world.
+Image for post
+Source: https://kylewurtz.com/around-the-world-in-80-months/
+I plan to study for at least an hour/day. I will use free and accessible resources throughout the process. I will share my daily update and resources through here. I plan to collect and share some interesting nuances that caught my attention here.
+Let’s spread the knowledge and motivation, explore the data world together! Are you with us?
